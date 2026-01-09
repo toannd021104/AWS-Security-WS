@@ -1,0 +1,27 @@
+# Ignore lab aggregation files
+content/all_labs_english.md
+content/all_labs_english_friendly_complete.md
+
+# Ignore common system files
+*.DS_Store
+*.swp
+*.swo
+
+# Ignore node modules and build outputs
+node_modules/
+dist/
+build/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore log files
+*.log
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore VS Code settings
+.vscode/
