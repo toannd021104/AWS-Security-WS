@@ -1,31 +1,40 @@
-# AWS Workshop Hugo Site
 
-This repository contains a Hugo-based static website for AWS security workshops and labs.
 
-## Features
-- All lab instructions rewritten in friendly, detailed English
-- Security Hub, GuardDuty, Inspector, Detective, Partner/Aggregation labs
-- Hugo theme and custom layouts
-- Web counter and author info in footer
+# AWS Security Workshop
 
-## How to build locally
-```bash
-hugo server -D
-```
-Then visit http://localhost:1313
+Website này tổng hợp các lab thực hành chi tiết về các dịch vụ bảo mật AWS, giúp bạn hiểu và vận dụng các giải pháp bảo vệ hệ thống trên nền tảng AWS.
 
-## How to deploy with GitHub Actions
-- Every push to the repository will trigger GitHub Actions to build and deploy the site to GitHub Pages automatically.
-- No manual deployment needed.
+## Nội dung các lab
 
-## Custom domain
-You can set a custom domain in GitHub Pages settings and point your DNS to GitHub.
+1. **Security Hub**
+	- Tổng hợp và quản lý các cảnh báo bảo mật từ nhiều dịch vụ AWS.
+	- Hướng dẫn cách xem, lọc, tạo insight và xử lý findings.
 
-## Author
-Ngueyn Duc Toan
+2. **GuardDuty**
+	- Phát hiện mối đe dọa tự động dựa trên phân tích hành vi và dữ liệu log.
+	- Thực hành kích hoạt, kiểm tra findings, tạo danh sách đe dọa tùy chỉnh.
 
-## Last updated
-22/12/2025
+3. **Inspector**
+	- Quét lỗ hổng bảo mật trên EC2, container và các tài nguyên cloud.
+	- Hướng dẫn cấu hình, chạy scan, xem kết quả và xử lý findings.
+
+4. **Detective**
+	- Phân tích, điều tra sự kiện bảo mật, truy vết nguyên nhân sự cố.
+	- Thực hành tạo graph, phân tích mối liên hệ giữa các sự kiện.
+
+5. **Tích hợp đối tác & tổng hợp nhiều tài khoản**
+	- Hướng dẫn kết nối các giải pháp bảo mật của đối tác vào Security Hub.
+	- Thực hành tổng hợp findings từ nhiều tài khoản và vùng AWS.
+
+## Mục tiêu
+- Giúp người học hiểu rõ cách vận hành, cấu hình và khai thác các dịch vụ bảo mật AWS.
+- Nâng cao kỹ năng thực hành bảo mật cloud qua các ví dụ thực tế.
+- Tối ưu hóa quy trình phát hiện, phân tích và xử lý sự cố bảo mật.
+
+## Hướng dẫn sử dụng
+- Xem chi tiết từng lab trong thư mục `content/`
+- Chạy thử website bằng lệnh: `hugo server -D` và truy cập http://localhost:1313
+- Mỗi lần push code, website sẽ tự động build và deploy lên GitHub Pages qua GitHub Actions.
 
 ---
-For more details, see the workshop content in the `content/` folder.
+Tác giả: Nguyen Duc Toan
