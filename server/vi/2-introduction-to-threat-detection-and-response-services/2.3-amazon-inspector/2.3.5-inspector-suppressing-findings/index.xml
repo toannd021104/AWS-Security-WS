@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inspector - Ẩn phát hiện on Threat Detection &amp; Response</title>
+    <link>//localhost:8080/vi/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.5-inspector-suppressing-findings/</link>
+    <description>Recent content in Inspector - Ẩn phát hiện on Threat Detection &amp; Response</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="//localhost:8080/vi/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.5-inspector-suppressing-findings/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

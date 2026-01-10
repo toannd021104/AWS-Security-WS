@@ -1,0 +1,288 @@
+[
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/",
+	"title": "AWS Security Hub",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub is a cloud security posture management service that continually performs automated security best practice checks and seamlessly aggregates security findings from AWS and third-party services to enable automated response.\n Automated, continuous best practice checks AWS Foundational Security Best Practices (FSBP) standard, CIS, and more Simple deployment, scalable up to 10K accounts AWS and 3rd-party services findings aggregation across accounts and Regions Automated response, and enrichment actions  Content  Security Hub - Overview Security Hub - Dashboard Security Hub Findings Security Hub - Pricing Security Hub - Notifications  "
+},
+{
+	"uri": "//localhost:8080/3/3.1/",
+	"title": "Centralizing findings from AWS security services",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub automatically collects and consolidates findings from AWS security services enabled in your environment, such as intrusion detection findings from Amazon GuardDuty, vulnerability scans from Amazon Inspector, Amazon Simple Storage Service (Amazon S3) bucket policy findings from Amazon Macie, publicly accessible and cross-account resources from IAM Access Analyzer, and resources lacking WAF coverage from AWS Firewall Manager.\nThis aggregation provides a view of security and compliance across your AWS environment. AWS Security Hub aggregates security findings from dozens of AWS security services and APN products in a single place and format, the AWS Security Finding Format (ASFF). Security Hub doesn\u0026rsquo;t retroactively detect and consolidate security findings that were generated before you enabled Security Hub. All findings are stored in Security Hub for 90 days after last update date.\nThe Integrations page in the AWS Management Console provides access to all of the available AWS and third-party product integrations. The AWS Security Hub API also provides operations to allow you to manage integrations. For AWS services, Security Hub automatically enables the integration, and you can optionally disable each integration.\nCentralizing findings from AWS security services Security Hub brings together findings from all your AWS security services—like GuardDuty, Inspector, Macie, Access Analyzer, and Firewall Manager—so you get a complete view of your security and compliance. Findings are stored for 90 days and shown in a unified format.\nCentralizing findings from AWS security services  Go to Security Hub and open the Summary page for an overview of your account’s security status. Review the insights to find common threat types. These are aggregated from services like GuardDuty. Open the Integrations page to see all available integrations. Many, like GuardDuty and Inspector, are enabled automatically, but you need to turn on each service to generate findings. You can enable or disable integrations as needed. Try disabling the Firewall Manager integration, but click Cancel to keep it active. To see findings from a specific service, click See findings for that integration. This adds a filter so you only see those findings. Adjust filters to change the list of findings you’re viewing.  Searching and reviewing security findings  To see all findings, remove filters and Group By options at the top of the page.\n  Try adding a filter for high severity findings from GuardDuty.\n  From the dropdown, select Severity label and choose is and then input HIGH. This is case-sensitive. Click Apply. Result: Choose one finding to see more information   Click Add filters in the search bar again. This time, select Product name and choose is and then input GuardDuty. Click Apply.\n  Pick one of the findings and click on the title. This opens the finding details pane. Expand all the sections and take a few minutes to review the information here. You can see the description, a link to remediation instructions, information about the resource, and more.\n  In the finding details pane click the finding ID link at the top of the pane to display the complete JSON for the finding. Security Hub processes findings using a standard findings format called the AWS Security Finding Format (ASFF), which eliminates the need for time-consuming data conversion efforts. The finding JSON can be downloaded to a file if ever needed for further investigation.   Close out of the JSON pop-up by clicking the X in the top right.\n  At the top of the finding details, open the History tab to view a chronological list of all changes that have been made to the finding. The transparency of finding history helps you identify potential security risks more quickly and take proactive steps to mitigate them.\n  Close the finding details pane by clicking the X in the top right, but stay on the findings page.\n  Let\u0026rsquo;s try to understand what resources in our environment are generating the most findings. Remove all the filters. Then add a new filter, select Resource type and choose is not and then input AwsAccount. Click Apply. Result:   Add another filter. Select Record state, choose is, and then input ACTIVE. Click Apply.   Click Add filters in the search bar again. This time, select Group by and choose ResourceId. Click Apply. This list shows you the number of security findings per resource. This can help you prioritize work by the resources in your environment with the most security issues. Result:   Generating insights from aggregated findings  If you find the list of number of security findings per resource beneficial, you can save it as a custom Insight for future reference. Click Create insight in the top right of the screen.\n  Name the insight \u0026ldquo;0. Resources by counts of findings\u0026rdquo;. Then click Create insight.   In the navigation on the left, click Insights. A Security Hub Insight is a collection of related findings defined by an aggregation statement and optional filters. An insight identifies a security area that requires attention and intervention. Security Hub offers several managed (default) insights that you can\u0026rsquo;t modify or delete. You can also create custom insights to track security issues unique to your AWS environment and usage.\n  The first Insight listed is the one you just created. Click on the title 0. Resources by counts of findings. Here you have the same view as before plus generated graphs. We\u0026rsquo;ll dive deeper into Insights later.   Return to the Insights page using the navigation on the left.\n  Take a few minutes to review the other AWS-provided Insights. Filter for insight severity.\n  Click on 24. Severity by counts of findings.\n  Select a Severity Label (e.g. Critical) to see the underlying finding(s).\n  Result: "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.1-detective-overview/",
+	"title": "Detective - Overview",
+	"tags": [],
+	"description": "",
+	"content": "Detective - Overview Amazon Detective is your AWS investigation assistant! It collects log data and uses smart analysis to help you quickly find the root cause of security issues. Detective builds a linked set of data so you can easily explore and investigate suspicious activities. It keeps up to a year of data and provides visualizations to show changes in activity and link them to security findings.\nAmazon Detective simplifies the investigative process and helps security teams conduct faster and more effective investigations. Amazon Detective’s prebuilt data aggregations, summaries, and context help you to quickly analyze and determine the nature and extent of possible security issues. Amazon Detective maintains up to a year of aggregated data and makes it easily available through a set of visualizations that shows changes in the type and volume of activity over a selected time window, and links those changes to security findings. There are no upfront costs and you pay only for the events analyzed, with no additional software to deploy or log feeds to enable.\nAmazon Detective extracts time-based events such as login attempts, API calls, and network traffic from AWS CloudTrail, Amazon Virtual Private Cloud (Amazon VPC) Flow Logs, Amazon GuardDuty findings, AWS Security Hub findings, and Amazon Elastic Kubernetes Service (Amazon EKS) audit logs. Detective creates a behavior graph that utilizes machine learning (ML) to create a unified, interactive view of your resource behaviors and their interactions over time, specifically for these time-based events. By exploring the behavior graph, you can analyze security events such as failed login attempts, suspicious APIs call, or finding groups to help you in investigating the root cause of your AWS Security Findings.\nThreat actors often perform a series of actions when attempting to compromise your AWS environment, which can result in multiple security findings across your AWS resources. Finding groups are collections of security findings and resources that are associated with a single potential security incident you should investigate together. Finding groups can help reduce triage time because you don’t have to investigate each individual security finding separately. You can start your investigation with finding groups, which offer a more complete understanding of the incident. It also offers interactive visualizations that allows you to explore specific findings and insights using generative AI to describe the chain of events in natural language.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.1-guardduty-overview/",
+	"title": "GuardDuty - Overview",
+	"tags": [],
+	"description": "",
+	"content": "GuardDuty - Overview Amazon GuardDuty is your AWS security detective! It keeps an eye out for any suspicious or unauthorized activity in your cloud environment. Using smart technology like machine learning and anomaly detection, GuardDuty helps protect your accounts, workloads, and data by analyzing huge amounts of AWS events and logs. You don’t need to install extra software—just let GuardDuty do the heavy lifting so you can focus on keeping your organization secure and innovative.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.1-inspector-overview/",
+	"title": "Inspector - Overview",
+	"tags": [],
+	"description": "",
+	"content": "Inspector - Overview Amazon Inspector is your AWS vulnerability scanner! It automatically checks your workloads for software vulnerabilities and network exposure. Once enabled, Inspector discovers EC2 instances, container images, and Lambda functions, then starts scanning for known issues. Inspector gives each finding a risk score to help you prioritize fixes. All findings are shown in the Inspector console and sent to Security Hub and EventBridge for automation. Container image findings are also sent to ECR for easy remediation.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/",
+	"title": "Security Hub - Overview",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub - Overview Security Standards  Start by heading to the AWS Security Hub summary page. This is your main dashboard for security insights. On the Summary page, you\u0026rsquo;ll easily spot which standards are active in your account. You’ll also see how many controls have passed or failed for each standard, and a handy percentage showing your overall compliance status. To explore further, click on Security standards in the left navigation menu. Good news: the standards were already enabled for you using CloudFormation when the workshop was set up! Let’s take a closer look at a specific standard. Click View Results for NIST Special Publication 800-53 Revision 5 to see more details.  Controls At the top, you can switch between tabs to view only \u0026ldquo;Passed\u0026rdquo;, \u0026ldquo;Failed\u0026rdquo;, or \u0026ldquo;Disabled\u0026rdquo; controls. You can also use the search bar to filter controls by ID. Try searching for ID = EC2.13. Click on the control titled \u0026ldquo;Security groups should not allow ingress from 0.0.0.0/0 to port 22.\u0026rdquo; This will show you all resources checked for this control and their current status—some may have FAILED, others PASSED. For every check, AWS Security Hub provides helpful remediation instructions. Click the Remediation instructions link at the top to open guidance in a new tab.  Investigating a misconfigured resource  Return to the Security Hub control you were looking at. For one of the FAILED resources open Config rule in the Investigate column. This will display links that will take you to AWS Config to view the configuration timeline for this resource or the overall config rule that performed the evaluation on this resource.   Click Configuration timeline. This opens AWS Config, and shows the resource configuration timeline for this security group. From here, you can investigate the point in time when the resource became non-compliant by reviewing the timestamped events. If you want, take a minute to expand a couple of the events.   Expand a CloudTrail Event listed.   Then click CloudTrail under View event. This opens up that event, logged in CloudTrail. AWS CloudTrail monitors and records account activity across your AWS infrastructure, giving you control over storage, analysis, and remediation actions.   Consolidated controls  Return to Security Hub and open General settings page from the navigation panel. https://console.aws.amazon.com/securityhub/home?#/settings/general   At the top of the page, you should see that both \u0026ldquo;Auto-enable new controls in enabled standards\u0026rdquo; and \u0026ldquo;Consolidated control findings\u0026rdquo; is enabled.\n  Click Controls from the navigation panel. This page shows a similar view to what you reviewed at the standard level, but here you see the full list of consolidated controls. This makes it easier to see how many individual controls in your account are passing, failing, or in some other state. Additionally, with consolidated findings enabled, controls included in multiple enabled standards no longer generate a finding per standard (duplicates). This helps manage the number of findings in your environment and removes potential confusion around duplicate findings.\n  Insights In the navigation on the left, click Insights.  In the search bar, input \u0026ldquo;severity\u0026rdquo; and select the insight named 24. Severity by counts of findings.  Security Hub offers several built-in managed insights. You cannot modify or delete managed insights. 24. Severity by counts of findings is one of the managed insights. Take a minute to review the number of findings in the environment. Select a Severity Label (e.g. Critical) to see the underlying finding(s).   "
+},
+{
+	"uri": "//localhost:8080/",
+	"title": "Threat Detection &amp; Response Workshop",
+	"tags": [],
+	"description": "",
+	"content": "Threat Detection \u0026amp; Response Workshop Overall This workshop is designed to give you an introduction and then take you deeper into AWS threat detection and response services use cases, best practices, and specific scenarios. This workshop starts with an introduction to services and then focuses on advanced topics of threat detection and response with modules focusing on multi-service solutions, integrations, custom orchestration examples, and examples of responding to specific detections. All of this is designed to prepare you and help you operate more securely on AWS.\nMost of this workshop is created from AWS workshop\u0026rsquo;s accounts (including setting up many EC2 instances), except section 5.3, where you can dive deep in the \u0026ldquo;Automated Security Response\u0026rdquo; AWS Solution with me. You can do this workshop by register to AWS Activation Day \u0026ldquo;Threat Detection \u0026amp; Response\u0026rdquo; at https://awsactivationdays.splashthat.com/.\n Content  Introduction  Introduction to threat detection and response services Integrating AWS Services and Partner Solutions Managing and Prioritizing Security Findings Automating Notifications and Response Security Simulations and Scenarios Software Vulnerability Management Clean up resource  "
+},
+{
+	"uri": "//localhost:8080/1-workshop-instructions/",
+	"title": "Workshop Instructions",
+	"tags": [],
+	"description": "",
+	"content": "This workshop is designed to give you an introduction and then take you deeper into AWS threat detection and response services use cases, best practices, and specific scenarios. This workshop starts with an introduction to services and then focuses on advanced topics of threat detection and response with modules focusing on multi-service solutions, integrations, custom orchestration examples, and examples of responding to specific detections. All of this is designed to prepare you and help you operate more securely on AWS.\nAvailable labs Introduction to Threat Detection and Response Services    Module Topic Level Services      AWS Security Hub     2.1.1 Security Hub - Overview 100 Security Hub   2.1.2 Security Hub - Dashboard 100 Security Hub   2.1.3 Security Hub - Findings 100 Security Hub   2.1.4 Security Hub - Pricing 100 Security Hub   2.1.5 Security Hub - Notifications 100 Security Hub    Amazon GuardDuty     2.2.1 GuardDuty - Overview 100 GuardDuty   2.2.2 GuardDuty - Findings 100 GuardDuty   2.2.3 GuardDuty - Protection plans 100 GuardDuty   2.2.4 GuardDuty - Building your own threat list 100 GuardDuty   2.2.5 GuardDuty - Suppressing findings 100 GuardDuty   2.2.6 GuardDuty - Pricing 100 GuardDuty   2.2.7 GuardDuty - Simple notifications 100 GuardDuty   2.2.8 GuardDuty - Retaining findings 100 GuardDuty    Amazon Inspector     2.3.1 Inspector - Overview 100 Inspector   2.3.2 Inspector - Dashboard 100 Inspector   2.3.3 Inspector - Findings 100 Inspector   2.3.4 Inspector - Vulnerability database search 100 Inspector   2.3.5 Inspector - Suppressing findings 100 Inspector   2.3.6 Inspector - Pricing 100 Inspector    Amazon Detective     2.4.1 Detective - Overview 100 Detective   2.4.2 Detective - Summary 100 Detective   2.4.3 Detective - Search 100 Detective   2.4.4 Detective - Investigations 100 Detective   2.4.5 Detective - Finding Groups 100 Detective   2.4.6 Detective - Pricing 100 Detective   2.4.7 Detective - EKS Audit Logs 100 Detective    Integrating AWS Services and Partner Solutions    Module Topic Level Services     3.1 Centralizing findings from AWS security services 100 Security Hub, GuardDuty   3.2 Aggregating findings from multiple AWS accounts 100 \u0026ndash;   3.3 Centralizing findings from AWS partner solutions 100 Security Hub   3.4 Cross-region finding aggregation 200 Security Hub   3.5 Building your own Security Hub integration 100 Security Hub    Managing and Prioritizing Security Findings    Module Topic Level     4.1 Prioritizing findings at scale with automations 100   4.2 Suppressing findings at scale with automations 100   4.3 Using insights for prioritization and metrics 200    Automating Notifications and Response    Module Topic Level Services     5.1 Setting up notifications 200 Security Hub   5.2 Set up a weekly vulnerability summary email 300 Security Hub, Inspector   5.3 Automated Security Response on AWS 200 Security Hub   5.4 Building your own automated response 300 Security Hub, GuardDuty   5.5 Enriching security findings with investigative data 400 Security Hub, GuardDuty, Detective    Security Simulations and Scenarios    Module Topic Level Services     6.1 Respond to IAM Role credential exfiltration 300 GuardDuty   6.2 Respond to a compromised S3 Bucket 300 GuardDuty   6.3 Respond to compromised IAM credentials 300 GuardDuty, Detective   6.4 Respond to a Lambda function calling malicious IP 300 GuardDuty   6.5 Respond to Malware on Amazon Elastic Block Store 200 GuardDuty   6.6 Respond to a compromised EC2 instance 200 GuardDuty, Detective    Software Vulnerability Management    Module Topic Level Services     7.1 Patching EC2 with Patch Manager 300 Inspector, Systems Manager   7.2 Vulnerability management for serverless applications 300 Inspector   7.3 Integrating Amazon Inspector into a CI/CD pipeline 300 Inspector    "
+},
+{
+	"uri": "//localhost:8080/3/3.2/",
+	"title": "Aggregating findings from multiple AWS accounts",
+	"tags": [],
+	"description": "",
+	"content": "Aggregating findings from multiple AWS accounts Using Security Hub with AWS Organizations lets you enable Security Hub for all accounts, including new ones. This gives you a centralized view of security across accounts and regions. Use the delegated administrator feature for central management.\nNote to readers: Although the workshop says \u0026ldquo;At this time, we are unable to demonstrate multi-account aggregation in this workshop\u0026rdquo;. However, in the Automated Security Response on AWS section, the architecture diagram shows that the Cloudformation stacks have been deployed in multiple AWS accounts.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/",
+	"title": "Amazon GuardDuty",
+	"tags": [],
+	"description": "",
+	"content": "Content  GuardDuty - Overview GuardDuty - Findings GuardDuty - Protection plans GuardDuty - Building your own threat list GuardDuty - Suppressing findings GuardDuty - Pricing GuardDuty - Notifications GuardDuty - Retaining findings  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.2-detective-summary/",
+	"title": "Detective - Summary",
+	"tags": [],
+	"description": "",
+	"content": "Detective - Summary Use the Summary page to spot entities involved in unusual activity over the past 24 hours. You can:\n See investigations for potential security events Find entities active in new geolocations Identify entities making the most API calls Spot EC2 instances with the most traffic See container clusters with the most containers  Adjust the time window to explore different periods and use visualizations to link activity to GuardDuty findings.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.2-guardduty-findings/",
+	"title": "GuardDuty - Findings",
+	"tags": [],
+	"description": "",
+	"content": "GuardDuty - Findings A GuardDuty finding is like a security alert for your AWS environment. Whenever GuardDuty spots something odd or potentially risky, it creates a finding for you to review.\nReview a GuardDuty finding  Go to the Findings section in Amazon GuardDuty by clicking Findings in the left navigation. Pick any finding from the list by clicking its row. This opens a summary on the right side. Each finding has details based on its type. Take a moment to review the details of the finding you selected.  Understanding GuardDuty finding severity Check the Severity of your chosen finding to see how critical it is. Want to see the raw data? Click the Finding ID at the top to view or download the JSON for the finding. When you’re done, close the summary by clicking the X in the top right.  Searching and Filtering GuardDuty Findings  Click on the Search bar where it says Add filter criteria.\n  Type Severity in the search bar and click on Severity, which then opens to a sub-menu with Low, Medium, and High options.\n  Check the box for High and click Apply. This will then update the list of displayed findings accordingly.   Managing GuardDuty findings With a finding selected, click the Actions dropdown (top right of the page). Click \u0026ldquo;Archive\u0026rdquo; to archive the finding.  Archiving the finding will hide it from the list of Current findings. To view it, click the \u0026ldquo;Current\u0026rdquo; dropdown, and select \u0026ldquo;Archived\u0026rdquo; to see the finding you just archived.  Result: To unarchive the finding, select it, and then click the Actions dropdown again (top right of the page). This time, click \u0026ldquo;Unarchive\u0026rdquo; to unarchive the finding.  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.2-inspector-dashboard/",
+	"title": "Inspector - Dashboard",
+	"tags": [],
+	"description": "",
+	"content": "Inspector - Dashboard Explore the Inspector dashboard  Open the Inspector Dashboard to see your environment coverage. Only a percentage of instances may be covered—click the percentage to see which ones are being scanned. Check out Risk Based Remediations at the top. This section highlights the top five software packages with critical vulnerabilities. Click a package name to see details and affected resources. The dashboard also shows:  ECR repositories with most critical findings Container images with most critical findings EC2 instances with most critical findings AMIs with most critical findings Lambda functions with most critical findings Code detectors for Lambda code scanning Explore some findings for more details!    "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/",
+	"title": "Introduction to threat detection and response services ",
+	"tags": [],
+	"description": "",
+	"content": "Content 2.1 AWS Security Hub 2.2 Amazon GuardDuty 2.3 Amazon Inspector 2.4 Amazon Detective\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.2-security-hub-dashboard/",
+	"title": "Security Hub - Dashboard",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub - Dashboard Security Hub summary   Go to the Summary page in Security Hub to get an overview of your security posture. AWS Security Hub summary page\n  At the top, check out the Security standards widget. It shows your latest security score and scores for each standard. These scores (0–100%) reflect how many controls have passed out of all enabled controls.   Take a moment to review the insights on the Summary page. Can you spot which resources are failing the most checks? There’s a widget that breaks down findings by resource type.   Scroll down to see graphs for Most common threat type and Software vulnerabilities with exploits. These visuals help you understand threats and vulnerabilities in your account.   You can also see details about findings from AWS GuardDuty. Click on one to learn more:   "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/",
+	"title": "Amazon Inspector",
+	"tags": [],
+	"description": "",
+	"content": "Content  Inspector - Overview Inspector - Dashboard Inspector - Findings Inspector - Vulnerability database search Inspector - Suppressing findings Inspector Pricing  "
+},
+{
+	"uri": "//localhost:8080/3/3.3/",
+	"title": "Centralizing findings from AWS partner solutions",
+	"tags": [],
+	"description": "",
+	"content": "Centralizing findings from AWS partner solutions Security Hub can also collect findings from AWS Partner Network solutions and your own custom security products. Only findings generated after enabling Security Hub are collected.\nReceive findings from Cloud Custodian  In Security Hub, search for Cloud Custodian in the Integrations page. Click Accept Findings and review the permissions. Click Accept findings to allow the partner solution to send findings. Cloud Custodian is already set up to send findings for this workshop. For other integrations, complete the Configure step in the partner solution. Click See findings to view new findings from Cloud Custodian. It may take a few minutes for them to appear.  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.3-detective-search/",
+	"title": "Detective - Search",
+	"tags": [],
+	"description": "",
+	"content": "Detective - Search Search for an AWS role   Open the Search page in Detective. https://us-east-1.console.aws.amazon.com/detective/home?region=us-east-1#search\n  For Select type, choose AWS Role and enter \u0026ldquo;WSParticipantRole\u0026rdquo;. Click Search.   Click the Principal ID to see how the role has been used. Review the visualizations and tabs for more insights. Note the scope time in the top right corner. Does this look like what you have been doing so far in the workshop? It should!\n  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.3-guardduty-protection-plans/",
+	"title": "GuardDuty - Protection plans",
+	"tags": [],
+	"description": "",
+	"content": "GuardDuty - Protection plans Prerequisite Before you start, make sure your EC2 instance has the SSM Management Role attached. If you need help, check the AWS documentation for adding instance profiles.\nAmazon S3 protection in GuardDuty  Visit the S3 Protection page under Protection plans in GuardDuty. Make sure S3 Protection is enabled to keep your storage safe.  EKS Protection in GuardDuty Go to the EKS Protection page under Protection plans. Ensure EKS Audit Log Monitoring is turned on. (Runtime Monitoring for EKS is now managed in a new feature tab.)  Runtime Monitoring in GuardDuty Head to the Runtime Monitoring page under Protection plans. Make sure Runtime Monitoring is enabled, including automated agent configuration for EKS, Fargate, and EC2. Switch to the Runtime coverage tab to see coverage statistics. If you see issues like \u0026ldquo;No Agent Reporting,\u0026rdquo; check your EC2 instance logs and AWS docs for troubleshooting tips.   Note: If the EC2 Instance Coverage status is unhealthy and the Issue status is \u0026ldquo;No Agent Reporting\u0026rdquo; or something related to SSM it may be due to SSM agent can not be installed in the EC2 instance. You can clarify by check /var/log/amzn-guardduty-agent in the instance (AL2, AL2023). Further read https://docs.aws.amazon.com/guardduty/latest/ug/gdu-assess-coverage-ec2.html#ec2-runtime-monitoring-coverage-issues-troubleshoot\nMalware Protection for EC2 in Amazon GuardDuty Visit the Malware Protection page under Protection plans in the GuardDuty console.   GuardDuty automatically initiates a malware scan after generating a finding indicative of malware in an EC2 instance or a container workload. Make sure that GuardDuty-initiated malware scan is enabled. Here are some EC2 malware scans If you follow a scan through Scan ID EICAR-Test file is a file to check whether the threat detection function works. It is not a real virus.\n  Scroll down and toggle Retain scanned snapshots when malware is detected on.\n  RDS Protection in Amazon GuardDuty Visit the RDS Protection page under Protection plans in the GuardDuty console.  Make sure that RDS Login Activity Monitoring is enabled.  Lambda Protection in Amazon GuardDuty Visit the Lambda Protection page under Protection plans in the GuardDuty console.  14. Make sure that Lambda Network Activity Monitoring is enabled.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.3-inspector-findings/",
+	"title": "Inspector  - Findings",
+	"tags": [],
+	"description": "",
+	"content": "Inspector - Findings Filter findings  Go to Findings: All Findings. Use the Filter criteria input at the top to add filters. This helps you focus on findings that matter most. Try filtering by resource tag: select Resource tag, enter Key \u0026ldquo;Environment\u0026rdquo; and Value \u0026ldquo;Development\u0026rdquo;, then Apply. Remove the filter by clicking Clear filters when done.  Review a network reachability finding for EC2 Add a filter for Type: select Network Reachability and Apply. Click a finding title to view its report. You’ll see Severity, open port range, account info, and network paths.  Reviewing a code vulnerability finding for Lambda  Remove all the filters by clicking Clear filters. Click the field, Add filter. Select Type and then select Code Vulnerability. Click Apply.\n  Click the title of finding, CWE-117,93 - Log injection, to view the finding report.\n  The finding states \u0026ldquo;User-provided inputs must be sanitized before they are logged. An attacker can use unsensitized input to break a log\u0026rsquo;s integrity, forge log entries, or bypass log monitors.\u0026rdquo; The details in the report include the information about the resource and suggested remediation. Read the suggested remediation. As a challenge, come back later if you have time and try to remediate the issue WITHOUT deleting the function.\n  Close out of the finding and remove all the filters by clicking Clear filters again.\n  "
+},
+{
+	"uri": "//localhost:8080/3/",
+	"title": "Integrating AWS Services and Partner Solutions",
+	"tags": [],
+	"description": "",
+	"content": "Content 3.1. Centralizing findings from AWS security services 3.2. Aggregating findings from multiple AWS accounts 3.3 Centralizing findings from AWS partner solutions 3.4 Cross-region finding aggregation 3.5 Building your own Security Hub integration\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.3-security-hub-findings/",
+	"title": "Security Hub - Findings",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub - Findings Findings in Security Hub  Click Findings in the left navigation to view all findings in Security Hub. Use filters to narrow down the list. Click Add filter to get started. Select Product name and type \u0026ldquo;GuardDuty\u0026rdquo; (case-sensitive), then click Apply. Now you’ll see all findings from GuardDuty. There are many! Try adding another filter for high severity findings: select Severity label, choose is, and type HIGH (case-sensitive), then Apply. Pick a finding and click its title to open the details pane. Expand all sections and take a few minutes to review the information—description, remediation, resource info, and more. At the top of the details pane, click the finding ID link to view the full JSON for the finding. You can download this if you need to investigate further. Close the JSON pop-up by clicking the X in the top right. In the details pane, open the History tab to see a timeline of changes to the finding. This helps you track security risks and respond quickly. Close the details pane by clicking the X, but stay on the Findings page. Try to figure out which resources are generating the most findings. Remove all filters, then add a new filter: Resource type, choose is not, and type AwsAccount. Click Apply. Add another filter: Record state, choose is, and type ACTIVE. Click Apply. Click Add filters again, select Group by, and choose ResourceId. Click Apply. Now you’ll see findings grouped by resource.  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/",
+	"title": "Amazon Detective",
+	"tags": [],
+	"description": "",
+	"content": "Content  Detective - Overview Detective - Summary Detective - Search Detective - Investigations Detective - Finding Groups Detective - Pricing Detective - EKS Audit Logs  "
+},
+{
+	"uri": "//localhost:8080/3/3.4/",
+	"title": "Cross-region finding aggregation",
+	"tags": [],
+	"description": "",
+	"content": "Cross-region finding aggregation With cross-Region aggregation, you can collect findings, updates, insights, and scores from multiple regions into one aggregation region. Manage all your data from this central location.\nSet up cross-region finding aggregation  If prompted, click Configure finding aggregation. Or open the Regions page under Settings. Click Configure finding aggregation. Select US East (N. Virginia) as your Aggregation Region. Select all available regions. Click Save to enable cross-region aggregation. Note: This erases aggregated scores and control data, but findings remain. Scores will reappear after new calculations.  Turn on AWS security services in linked regions Enable all needed AWS security services in your linked regions using CloudFormation. Once enabled, findings from those regions will be aggregated in your central region.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.4-detective-investigations/",
+	"title": "Detective - Investigations",
+	"tags": [],
+	"description": "",
+	"content": "Detective - Investigations Identify a resource to investigate  Open the IAM console and navigate to the Roles page. https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/roles Search for the role starting with \u0026ldquo;cfn-GuardDutyLabsInfrastructure-GeneralInstanceRole-\u0026rdquo;. Click the role name and copy its ARN.  Run a Detective investigation Open the Investigations page from the Detective console. https://us-east-1.console.aws.amazon.com/detective/home?region=us-east-1#investigations In the Investigations page, choose Run investigation in the top right corner. In the Select resource section, you have three ways to run an investigation. You can choose to run the investigation for a resource recommended by Detective. You can run the investigation for a specific resource. You can also investigate a resource from the Detective Search page. Select Specify an AWS role or user with an ARN. Under Select resource type select AWS role. Under Resource ARN, input the ARN of the resource you identified above. Click Run investigation. Wait for the investigation to complete. It should display a status of \u0026ldquo;Successful\u0026rdquo; within 2-3 minutes. Click the ID of the investigation to review the results. Depending on how long this account has been provisioned, you may see \u0026ldquo;We did not observe uncommon behavior\u0026hellip;\u0026rdquo;. However, if something has been detected, you will see the report contains an Indicators of Compromise section that includes details regarding one or more indicators of compromise. Investigations summary highlights anomalous indicators that require attention, for the selected scope time. Using the summary, you can more quickly identify the root cause of potential security issues, identify patterns, and understand the resources impacted by security events.  If you want to find more detail about the indicator type IP address, you will see different TTPs:\nIndicators type TTP:\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.4-guardduty-building-your-own-threat-list/",
+	"title": "GuardDuty - Building your own threat list",
+	"tags": [],
+	"description": "",
+	"content": "GuardDuty - Building your own threat list Implementing a threat list with a test address  Go to Amazon S3 in the AWS console. Find the bucket with \u0026ldquo;-threatlistbucket-\u0026rdquo; in its name and click it.   Here is the bucket that the AWS Workshop account has setup 3. Upload your custom threat list file to this bucket.  Copy the S3 URI of your uploaded file for later use. To find the URI, open the bucket, click to open the file, and copy the S3 URI.   Now, add your threat list to GuardDuty: go back to GuardDuty and select Lists in the left navigation.\n  Click Add a threat IP list.   Give your list a friendly name like \u0026ldquo;Test Threat List\u0026rdquo;.\n  Under location type the S3 URI for the uploaded file that you recorded earlier.\n  Select Plaintext as the Format.   Click I Agree and then click Add list\n  You will need to activate the list once it has been added to GuardDuty. Select the newly added list. Click Actions, and then select Activate.   A green status banner will appear saying \u0026ldquo;Successfully updated the list\u0026hellip;\u0026rdquo;.\n  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.4-inspector-vulnerability-database-search/",
+	"title": "Inspector - Vulnerability database search",
+	"tags": [],
+	"description": "",
+	"content": "Inspector - Vulnerability database search Search for a CVE  Open the Vulnerability database search page under Settings in Amazon Inspector. This is where you can look up details about specific vulnerabilities. In the search bar, type \u0026ldquo;CVE-2021-44228\u0026rdquo; (or any CVE you want to investigate). This will bring up all the information Inspector has about that vulnerability. Take a moment to read through the description, CVE ID, severity rating, and CVSS scores. These details help you understand how serious the vulnerability is and what impact it might have. Review the vulnerability intelligence section for extra context, such as exploitability and remediation advice. This is especially useful for planning how to address the issue in your environment. If you want to see which resources in your account are affected, click View findings. Inspector will show you all related findings so you can take action quickly.  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.4-security-hub-pricing/",
+	"title": "Security Hub - Pricing",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub - Pricing  During your free trial, Security Hub estimates your monthly bill based on current usage across accounts and regions. To check usage, open the Usage page from the navigation under Settings. Review your trial usage and pricing details here.  "
+},
+{
+	"uri": "//localhost:8080/3/3.5/",
+	"title": "Building your own Security Hub integration",
+	"tags": [],
+	"description": "",
+	"content": "Building your own Security Hub integration You can build custom solutions to send Security Hub findings to places like Slack. For example, set up a custom action to send finding details to a Lambda function (via EventBridge), which formats the message and posts it to a Slack channel.\nSetup Slack workspace  Create a new Slack workspace using the provided link. Make a channel called \u0026ldquo;security-hub-alerts\u0026rdquo; for notifications. Set it to public.  Setup Slack application for integration Go to the Slack API site and click Your apps, then Create an App. Choose From scratch, name your app \u0026ldquo;security-hub-to-slack\u0026rdquo;, and select your workspace. Click Create App. Open Incoming Webhooks and turn them ON. Click Add New Webhook to Workspace, select #security-hub-alerts, and click Allow. Copy the Webhook URL for later use.  Create Custom Action in Security Hub Slack is setup. Now you need to configure the Security Hub custom action, EventBridge rule, and Lambda function to push findings to your Slack app (via the webhook).\nReturn to Security Hub and open the Custom actions page. Click Create custom action. Name it \u0026ldquo;Send to Slack\u0026rdquo;, describe it, and set the Custom action ID to \u0026ldquo;SendToSlack\u0026rdquo;. Copy the Custom action ARN for later use.  Create the EventBridge Rule Navigate to Amazon EventBridge and click Create rule. Name and describe your rule, then click Next. Leave Event source as AWS events or EventBridge partner events. Set AWS Service to Security Hub. Choose Security Hub Findings – Custom Action for Event Type. Select the Specific custom action ARN(s) radio button and enter your custom action ARN. Click Next. Choose Lambda function as the target and select security-hub-to-slack. Click Next, then Next again, and finally Create rule.  Customize the Lambda function to send messages to your Slack channel Go to the Lambda console, open the security-hub-to-slack function, and navigate to Configuration \u0026gt; Environment variables. Edit the variables: set slackChannel to \u0026ldquo;security-hub-alerts\u0026rdquo; and webHookUrl to your copied webhook. Click Save.  Test the Integration In Security Hub, go to the Findings page. Select a finding and choose Send to Slack from the Actions dropdown. Check the #security-hub-alerts channel in Slack for the new message.  Automate the slack messages Problem Statement: Your manager is concerned about the scalability of the appraoch you implemented because it requires you to manually select the findings to be sent to Slack. You have been instructed to automate this so findings that have MEDIUM or HIGH severity labels are automatically sent to Slack via the integration. Can you figure out what changes need to be made in order to accomplish this objective?\nHint: 6. Select Specific Severity label(s) and in the dropdown, pick MEDIUM and HIGH. That\u0026rsquo;s it. Continue through the same steps as before  Click Next.\n  On the Select target(s) step, select Lambda function from the Select a target dropdown. Then select security-hub-to-slack from the Function dropdown. Click Next.\n   On the Configure tags step, click Next.\n  On the Review and create step, click Create rule.   "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.5-detective-finding-groups/",
+	"title": "Detective - Finding Groups",
+	"tags": [],
+	"description": "",
+	"content": "Detective - Finding Groups Detective finding groups help you analyze multiple related activities for a potential security event. Instead of investigating each finding separately, you can look at the whole group to understand the incident better. Detective uses graph analysis to link findings and entities, making investigations faster and more complete.\nYou can analyze the root cause for high severity GuardDuty findings using finding groups. If a threat actor is attempting to compromise your AWS environment, they typically perform a sequence of actions that lead to multiple security findings and unusual behaviors. These actions are often spread across time and entities. When security findings are investigated in isolation, it can lead to a misinterpretation of their significance, and difficulty in finding the root cause. Amazon Detective addresses this problem by applying a graph analysis technique that infers relationships between findings and entities, and groups them together. We recommend treating finding groups as the starting point for investigating the involved entities and findings.\nDetective analyzes data from findings and groups them with other findings that are likely to be related based on resources they share. For example, findings related to actions taken by the same IAM role sessions or originating from the same IP address are very likely to be part of the same underlying activity. It\u0026rsquo;s valuable to investigate findings and evidence as a group, even if the associations made by Detective aren\u0026rsquo;t related.\nIn addition to findings, each group includes entities involved in the findings. The entities can include resources outside of AWS such as IP Addresses or user agents.\nAfter an initial GuardDuty finding occurs that is related to another finding, the finding group with all related findings and all involved entities is created within 48 hours.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.5-guardduty-suppressing-findings/",
+	"title": "GuardDuty - Suppressing findings",
+	"tags": [],
+	"description": "",
+	"content": "GuardDuty - Suppressing findings Set up a rule to suppress unwanted findings  In GuardDuty, open the Findings page. Click Suppress Findings. Add your first filter: select Finding Type and type \u0026ldquo;Recon:EC2/Portscan\u0026rdquo;. Click Apply. Check the preview to see which findings will be suppressed. To avoid missing important alerts, add a second filter: select Instance Tag Value and type \u0026ldquo;Scanner\u0026rdquo;. Click Apply. Now only findings from your vulnerability assessment tool will be suppressed. Name your rule \u0026ldquo;VulnerabilityAssessmentTool\u0026rdquo;. Add a description: \u0026ldquo;Suppress findings from Vulnerability Assessment Tool.\u0026rdquo;  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.5-inspector-suppressing-findings/",
+	"title": "Inspector - Suppressing findings",
+	"tags": [],
+	"description": "",
+	"content": "Inspector - Suppressing findings Suppression rules help you focus on critical findings by hiding less important ones. Suppressed findings are still stored and published to Security Hub and EventBridge, but don’t appear in your list by default.\nSet up a rule to suppress low severity findings in dev  Click Suppression rules in the left navigation. Click Create Rule. Name your rule \u0026ldquo;Low Severity - Dev Environment\u0026rdquo;. Add a description: \u0026ldquo;Suppress all findings with a low severity score for resources tagged with Development\u0026rdquo;. Under filters, select Severity and check Low. Click Apply. Then click to add another filter and select Resource tag under EC2. Input \u0026ldquo;Environment\u0026rdquo; for the key and \u0026ldquo;Development\u0026rdquo; for the value. Click Apply. Click Save. You can view suppressed findings in the All Findings page by switching from Active to Suppressed in the dropdown.  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.5-security-hub-notifications/",
+	"title": "Security Hub - Notifications",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub - Notifications Configure SNS topic  Go to Amazon SNS in the AWS console. Click Topics in the left navigation. Click Create topic. Choose Standard type. Name your topic \u0026ldquo;security-hub-findings\u0026rdquo;. Leave other settings as default and click Create topic at the bottom.  Subscribe to the topic On the topic page, click Create subscription. For Protocol, select email. For Endpoint, enter your email address to receive notifications during the workshop. You can unsubscribe later. Click Create subscription. Check your email for a confirmation message and click the \u0026ldquo;Confirm subscription\u0026rdquo; link.  Create an EventBridge Rule to send findings to the topic Navigate to Amazon EventBridge in the AWS console. Click the Create rule button. Name your rule \u0026ldquo;security-hub-findings\u0026rdquo; and click Next. In the Event pattern section, click Edit pattern. Add the following event pattern (JSON) to filter for CRITICAL severity findings:  { \u0026#34;source\u0026#34;: [ \u0026#34;aws.securityhub\u0026#34; ], \u0026#34;detail-type\u0026#34;: [ \u0026#34;Security Hub Findings - Imported\u0026#34; ], \u0026#34;detail\u0026#34;: { \u0026#34;findings\u0026#34;: { \u0026#34;ProductName\u0026#34;: [ \u0026#34;Security Hub\u0026#34; ], \u0026#34;Severity\u0026#34;: { \u0026#34;Label\u0026#34;: [ \u0026#34;CRITICAL\u0026#34; ] } } } } Click Next. For Select a target, choose SNS topic. For Topic, select security-hub-findings. Click Next. Click Next on the Configure tags - optional page. Click Create rule on the Review and create page.  Keep an eye on your email for notifications from Security Hub findings.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.6-detective-pricing/",
+	"title": "Detective - Pricing",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub - Pricing Detective - Pricing  Detective shows how many days are left in your free trial and your average daily cost. Open the Usage page under Settings to review your usage and estimated cost. The estimates displayed in the GuardDuty console may differ slightly than those in your AWS Billing and Cost Management console. For more information, see https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html.  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.6-guradduty-pricing/",
+	"title": "GuradDuty - Pricing",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub - Pricing   GuardDuty shows you how many days are left in your free trial and your average daily cost, so you can plan your budget easily.\n  To check usage, open the Usage page under Settings.   Review your current trial usage and estimated cost. For more details, see the AWS documentation.\n  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.6-inspector-pricing/",
+	"title": "Inspector - Pricing",
+	"tags": [],
+	"description": "",
+	"content": "Inspector - Pricing  Inspector shows estimated spend, including organization-wide costs, so you can plan your budget for vulnerability scans. Open the Usage page under General Settings. Review your projected cost based on recent usage.  "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.7-detective-eks-audit-logs/",
+	"title": "Detective - EKS Audit Logs",
+	"tags": [],
+	"description": "",
+	"content": "Detective - EKS Audit Logs Add EKS audit logs as a data source   Open the Detective console. https://us-east-1.console.aws.amazon.com/detective/home?region=us-east-1#summary\n  Under Settings, choose General.\n  Click Edit next to Optional source packages.   Make sure EKS audit logs are enabled.   "
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.7-guardduty-notifications/",
+	"title": "GuardDuty - Notifications",
+	"tags": [],
+	"description": "",
+	"content": "GuardDuty - Notifications Configure SNS topic  Go to Amazon SNS in the AWS console. Click Topics in the left navigation. Click Create topic. Choose Standard type. Name your topic \u0026ldquo;guardduty-findings\u0026rdquo;. Leave other settings as default and click Create topic.  Subscribe to the topic On the topic page, click Create subscription. For Protocol, select email. Enter your email address to receive notifications. You can unsubscribe after the workshop. Click Create subscription. Check your email for a confirmation message and click the confirmation link.  Create an EventBridge Rule to send findings to the topic Navigate to Amazon EventBridge in the AWS console. Click Create rule. Name your rule \u0026ldquo;guardduty-findings\u0026rdquo;. In the Event pattern section, choose Custom pattern. Enter the following pattern to filter for GuardDuty findings with CRITICAL severity:  { \u0026#34;source\u0026#34;: [\u0026#34;aws.guardduty\u0026#34;], \u0026#34;detail-type\u0026#34;: [\u0026#34;GuardDuty Finding\u0026#34;], \u0026#34;detail\u0026#34;: { \u0026#34;severity\u0026#34;: [ 4, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.0, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.0, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9 ] } } Select the target as SNS topic and choose the \u0026ldquo;guardduty-findings\u0026rdquo; topic. Click Next, then Create rule.  You will now receive email notifications for GuardDuty findings with CRITICAL severity.\n"
+},
+{
+	"uri": "//localhost:8080/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.8-guardduty-retaining-findings/",
+	"title": "GuardDuty - Retaining findings",
+	"tags": [],
+	"description": "",
+	"content": "GuardDuty - Retaining findings GuardDuty keeps findings for 90 days and can export them to Amazon EventBridge or S3 for long-term tracking. You can set how often findings are exported, and GuardDuty uses AWS KMS to encrypt data in your S3 bucket. Make sure your permissions are set up so GuardDuty can export findings securely.\nAny new active findings that GuardDuty generates are automatically exported within about 5 minutes after the finding is generated. You can set the frequency for how often updates to the active findings are exported to EventBridge. The frequency that you select applies to the exporting of new occurrences of existing findings to EventBridge, your S3 bucket (when configured), and Detective (when integrated).\nWhen you configure settings to export findings to an Amazon S3 bucket, GuardDuty uses AWS Key Management Service (AWS KMS) to encrypt the findings data in your S3 bucket. This requires you to add permissions to your S3 bucket and the AWS KMS key so that GuardDuty can use them to export findings in your account.\n"
+},
+{
+	"uri": "//localhost:8080/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:8080/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
