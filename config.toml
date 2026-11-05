@@ -1,0 +1,25 @@
+# Change the default theme to be use when building the site with Hugo
+theme = "hugo-theme-learn"
+canonifyURLs = true
+defaultContentLanguage = "en"
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "workshop"
+  # Git hub repo link
+  editURL = ""
+  description = "A hands-on, layered security workshop for Amazon EKS."
+  author = "EKS Defense in Depth Workshop"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  
+[Languages]
+[Languages.en]
+title = "EKS Defense in Depth"
+weight = 1
+languageName = "English"
+
